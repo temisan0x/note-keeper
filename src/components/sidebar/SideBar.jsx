@@ -1,19 +1,34 @@
 import React from 'react'
-import Notes from './Notes'
-import Reminders from './Reminders';
-import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom'
+import { NavLink } from "react-router-dom";
+import '../../styles/global.css';
 
+function SideBar() {
 
-const SideBar = () => {
     return (
-        <BrowserRouter>
-        <div>
-            <Routes>
-                <Route path="/user" component={Notes} />
-                <Route path="/" exact component={Reminders} />
-            </Routes>
-        </div>
-    </BrowserRouter >
+        <ul>
+            <li>
+                <NavLink
+                    style={({ isActive }) => {
+                        return {
+                            display: "block",
+                            margin: "1rem 0",
+                            color: isActive ? "red" : "",
+                        };
+                    }}
+                    to='/' >Home</NavLink>
+            </li>
+            <li >
+                <NavLink
+                    style={({ isActive }) => {
+                        return {
+                            display: "block",
+                            margin: "1rem 0",
+                            color: isActive ? "red" : "",
+                        };
+                    }}
+                    to='/journal'>Journal</NavLink>
+            </li>
+        </ul>
     )
 }
 

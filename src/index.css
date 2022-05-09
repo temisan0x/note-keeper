@@ -5,7 +5,39 @@ body {
     sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.journal {
+  display: flex;
+  align-items:baseline;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  background: black
+}
+
+.journal>ul {
+  width: 30%;
+}
+
+.journal>ul>li {
+  list-style-type: disclosure-open;
+  /* color: #fff; */
+  line-height: 30px;
+  /* background: red; */
+  margin: 20px;
+}
+
+.journal>ul>li>a {
+  list-style-type: disclosure-open;
+  color: #fff;
+  text-decoration: none;
+}
+
+.journal>ul>li>a:active {
+  background: grey;
+  color: #fff;
+  border: 1px solid red;
+}
+
+p {
+  color: #fff;
 }
