@@ -43,10 +43,10 @@ export const reorderCardPosition = (source, destination, cardId) => {
 				return;
 			}
 			if (card.position < Math.min(source.index, destination.index) ||
-				card.position> Math.max(source.index, destination.index)
+				card.position > Math.max(source.index, destination.index)
 			) {
 				return;
-			} 
+			}
 			if (source.index < destination.index) {
 				card.position--;
 				return;
@@ -77,5 +77,50 @@ export const reorderCardPosition = (source, destination, cardId) => {
 		boardData[destination.droppableId].cards[cardId] = movingCards;
 	}
 
+	dataSubject.next({ ...boardData });
+};
+
+//crud functionality
+//card will be updated in any position the card is dropped
+export const addCard = (listId, content) => {
+	const listCards = boardData[listId].cards;
+	const position = Object.keys(listCards).length;
+	const card = {
+		position,
+		card_content: content
+	};
+	boardData[listId].cards[uuid()] = card;
+	dataSubject.next({ ...boardData });
+}
+
+export const addList = (listTitle) => {
+	const position = Object.keys(boardData).length; //initial state is null
+	const list = { position, list_title: listTitle, cards: {} };
+	boardData[uuid()] = list;
+	dataSubject.next({ ...boardData });
+};
+
+export const updateCard = (listId, cardId, content) => {
+	boardData[listId].cards[cardId].card_content = content;
+	dataSubject.next({ ...boardData });
+};
+
+
+export const updateListTitle = (listTitle, listId) => {
+	boardData[listId].list_title = listTitle;
+	dataSubject.next({ ...boardData });
+}
+
+export const deleteList = (listId) => {
+	delete boardData[listId];
 	dataSubject.next({...boardData})
 }
+
+export const deleteCard = (listId, cardId) => {
+	delete boardData[listId].cards[cardId];
+	dataSubject.next({...boardData})
+}
+
+
+
+
