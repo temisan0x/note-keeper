@@ -13,7 +13,7 @@
     display: flex;
 }
 
-.note>input {
+textarea {
     border-radius: 3px;
     margin: -4px 0;
     padding: 4px 3px;
@@ -21,6 +21,21 @@
     background: transparent none repeat scroll 0% 0%;
     color: #fff;
     font-size: 1rem;
+    height: auto;
+    overflow-y: hidden;
+    /* margin: -4px 0;
+    padding: 4px 8px;
+    border: none;
+    resize: none;
+    border-radius: 3px;
+    width: 100%;
+    background: transparent; */
+}
+
+textarea:focus {
+    background: white;
+    box-shadow: inset 0 0 0 2px #0079bf;
+    outline: 0;
 }
 
 .note>input:focus {
@@ -32,7 +47,7 @@
 .note>button {
     padding: 5px 22px;
     background: inherit;
-    border:1px solid rgba(220, 20, 60, 0.364);
+    border: 1px solid rgba(220, 20, 60, 0.364);
     color: #fff;
     cursor: pointer;
     transition: 1s ease-in;

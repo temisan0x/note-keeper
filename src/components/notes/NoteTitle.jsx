@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { updateListTitle, deleteList } from '../../state/boardData';
+import AdjustableTextArea from './AdjustableTextArea';
 
 const NoteTitle = ({ title, listId, setDragBlocking, dragHandleProps }) => {
 
@@ -31,13 +32,12 @@ const NoteTitle = ({ title, listId, setDragBlocking, dragHandleProps }) => {
     return (
         <div {...dragHandleProps} className="container">
             <div onClick={handleTitleClick} className="note">
-                <input
-                    className='titleInput'
+                <AdjustableTextArea
                     onSave={onSave}
                     updatevalue={updatevalue}
                     onBlur={onSave} //adds the initial value of "title"
                     editmode={editmode} //title edit mode
-                />
+                ></AdjustableTextArea>
                 <button onClick={handleDeleteClick}>x</button>
             </div>hr
         </div>
