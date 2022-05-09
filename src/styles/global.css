@@ -1,0 +1,53 @@
+.container {
+    border: 1px solid crimson;
+    border-radius: 10px;
+    height: 37vh;
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.note {
+    display: flex;
+}
+
+.note>input {
+    border-radius: 3px;
+    margin: -4px 0;
+    padding: 4px 3px;
+    border: none;
+    background: transparent none repeat scroll 0% 0%;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.note>input:focus {
+    box-shadow: inset 0 0 0 2px crimson;
+    outline: 0;
+    border-bottom: none;
+}
+
+.note>button {
+    padding: 5px 22px;
+    background: inherit;
+    border:1px solid rgba(220, 20, 60, 0.364);
+    color: #fff;
+    cursor: pointer;
+    transition: 1s ease-in;
+}
+
+.note>button:hover {
+    padding: 5px 22px;
+    background: crimson;
+    border: none;
+}
+
+hr {
+    width: 59%;
+    margin: 13px 3px;
+    height: 2px;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, crimson));
+    border: none;
+}

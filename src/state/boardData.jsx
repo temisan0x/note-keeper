@@ -1,9 +1,9 @@
 import { Subject } from "rxjs";
-import uuid from "uuidv4";
+import { uuid } from 'uuidv4';
 
-//a subject is an observable that talks to many observers
+//(rxjs). subject is an observable that talks to many observers
 
-let boardData = null;
+let boardData = null; //initiai state
 export const dataSubject = new Subject();
 
 dataSubject.subscribe((_boardData) => {
@@ -105,6 +105,12 @@ export const updateCard = (listId, cardId, content) => {
 	dataSubject.next({ ...boardData });
 };
 
+// let boardData = null; //initiai state
+// export const dataSubject = new Subject();
+
+// dataSubject.subscribe((_boardData) => {
+// 	boardData = _boardData;
+// });
 
 export const updateListTitle = (listTitle, listId) => {
 	boardData[listId].list_title = listTitle;

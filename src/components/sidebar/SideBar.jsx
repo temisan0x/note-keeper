@@ -12,7 +12,7 @@ function SideBar() {
                         return {
                             display: "block",
                             margin: "1rem 0",
-                            color: isActive ? "red" : "",
+                            color: isActive ? "crimson" : "",
                         };
                     }}
                     to='/' >Home</NavLink>
@@ -23,7 +23,7 @@ function SideBar() {
                         return {
                             display: "block",
                             margin: "1rem 0",
-                            color: isActive ? "red" : "",
+                            color: isActive ? "crimson" : "",
                         };
                     }}
                     to='/journal'>Journal</NavLink>
