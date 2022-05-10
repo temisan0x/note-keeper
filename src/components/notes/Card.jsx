@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Draggable } from 'react-beautiful-dnd';
 import { updateCard, deleteCard } from '../../state/boardData';
+import AdjustableTextArea from './AdjustableTextArea';
 
 const Card = ({ listId, cardId, cardData }) => {
 
@@ -24,6 +25,7 @@ const Card = ({ listId, cardId, cardData }) => {
             draggableId={cardId}
             index={cardData.position}
             disableInteractiveElementBlocking={!editmode}
+            className="container"
         >
             {(draggableProvided) => (
                 <div
@@ -33,12 +35,18 @@ const Card = ({ listId, cardId, cardData }) => {
                     editmode={editmode}
                 >
                     <div onClick={handleContentClick}>
-                        
+                        <AdjustableTextArea
+                            updateValue={cardData.card_content}
+                            onBlur={onSave}
+                            editmode={editmode}
+                            onSave={onSave}
+                        ></AdjustableTextArea>
                     </div>
+                    <button onClick={handleDeleteClick}>x</button>
                 </div>
             )}
         </Draggable>
     )
 }
 
-export default Card
+export default Card;

@@ -4,9 +4,9 @@ import { uuid } from 'uuidv4';
 //(rxjs). subject is an observable that talks to many observers
 
 let boardData = null; //initiai state
-export const dataSubject = new Subject();
+export const boardDataSubject = new Subject();
 
-dataSubject.subscribe((_boardData) => {
+boardDataSubject.subscribe((_boardData) => {
 	boardData = _boardData;
 });
 
@@ -29,7 +29,7 @@ export const reorderListPosition = (initialPosition, newPosition) => {
 		}
 		list.position++;
 	});
-	dataSubject.next({ ...boardData });
+	boardDataSubject.next({ ...boardData });
 };
 
 export const reorderCardPosition = (source, destination, cardId) => {
@@ -77,7 +77,7 @@ export const reorderCardPosition = (source, destination, cardId) => {
 		boardData[destination.droppableId].cards[cardId] = movingCards;
 	}
 
-	dataSubject.next({ ...boardData });
+	boardDataSubject.next({ ...boardData });
 };
 
 //crud functionality
@@ -90,41 +90,41 @@ export const addCard = (listId, content) => {
 		card_content: content
 	};
 	boardData[listId].cards[uuid()] = card;
-	dataSubject.next({ ...boardData });
+	boardDataSubject.next({ ...boardData });
 }
 
 export const addList = (listTitle) => {
 	const position = Object.keys(boardData).length; //initial state is null
 	const list = { position, list_title: listTitle, cards: {} };
 	boardData[uuid()] = list;
-	dataSubject.next({ ...boardData });
+	boardDataSubject.next({ ...boardData });
 };
 
 export const updateCard = (listId, cardId, content) => {
 	boardData[listId].cards[cardId].card_content = content;
-	dataSubject.next({ ...boardData });
+	boardDataSubject.next({ ...boardData });
 };
 
 // let boardData = null; //initiai state
-// export const dataSubject = new Subject();
+// export const boardDataSubject = new Subject();
 
-// dataSubject.subscribe((_boardData) => {
+// boardDataSubject.subscribe((_boardData) => {
 // 	boardData = _boardData;
 // });
 
 export const updateListTitle = (listTitle, listId) => {
 	boardData[listId].list_title = listTitle;
-	dataSubject.next({ ...boardData });
+	boardDataSubject.next({ ...boardData });
 }
 
 export const deleteList = (listId) => {
 	delete boardData[listId];
-	dataSubject.next({...boardData})
+	boardDataSubject.next({...boardData})
 }
 
 export const deleteCard = (listId, cardId) => {
 	delete boardData[listId].cards[cardId];
-	dataSubject.next({...boardData})
+	boardDataSubject.next({...boardData})
 }
 
 
